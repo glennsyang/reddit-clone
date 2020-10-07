@@ -10,9 +10,11 @@ import Redis from 'ioredis';
 import session from 'express-session';
 import connectRedis from "connect-redis";
 import cors from "cors";
-import {createConnection} from "typeorm";
+import { createConnection } from "typeorm";
 import { User } from "./entities/User";
 import { Post } from "./entities/Post";
+import { Updoot } from "./entities/Updoot";
+import path from "path";
 
 const main = async () => {
     const conn = await createConnection({
@@ -22,9 +24,14 @@ const main = async () => {
         password: 'postgres',
         logging: true,
         synchronize: true,
-        entities: [Post, User]
+        migrations: [path.join(__dirname, "./migrations/*")],
+        entities: [Post, User, Updoot]
     });
-    
+
+    await conn.runMigrations();
+
+    // await Post.delete({});
+
     const app = express();
 
     const RedisStore = connectRedis(session);
