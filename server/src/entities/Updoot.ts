@@ -1,5 +1,5 @@
 import { Entity, Column, BaseEntity, ManyToOne, PrimaryColumn } from "typeorm";
-import { ObjectType, Field, Int } from "type-graphql";
+import { ObjectType, Field } from "type-graphql";
 import { User } from "./User";
 import { Post } from "./Post";
 

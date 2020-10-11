@@ -35,12 +35,19 @@ export class PostResolver {
     }
 
     @FieldResolver(() => Int, { nullable: true })
-    async voteStatus(@Root() post: Post, @Ctx() { updootLoader, req }: MyContext) {
+    async voteStatus(
+        @Root() post: Post,
+        @Ctx() { updootLoader, req }: MyContext
+    ) {
         if (!req.session.userId) {
             return null;
         }
 
-        const updoot = await updootLoader.load({ postId: post.id, userId: req.session.userId });
+        console.log("user:", req.session.userId, post.id);
+        const updoot = await updootLoader.load({
+            postId: post.id,
+            userId: req.session.userId,
+        });
 
         return updoot ? updoot.value : null;
     }
@@ -95,10 +102,9 @@ export class PostResolver {
     async posts(
         @Arg('limit', () => Int) limit: number,
         @Arg('cursor', () => String, { nullable: true }) cursor: string | null,
-        @Ctx() { req }: MyContext
     ): Promise<PaginatedPosts> {
         const realLimit = Math.min(50, limit);
-        const realLimitPlusOne = Math.min(50, limit) + 1;
+        const realLimitPlusOne = realLimit + 1;
 
         const replacements: any[] = [realLimitPlusOne];
 

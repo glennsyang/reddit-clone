@@ -35,6 +35,8 @@ const EditPost = ({ }) => {
         );
     }
 
+    console.log(data.post);
+
     return (
         <Layout variant="small">
             <Formik initialValues={{ title: data.post.title, text: data.post.text }}
