@@ -50,7 +50,7 @@ export const NavBar: React.FC<NavBarProps> = ({ }) => {
     }
 
     return (
-        <Flex zIndex={1} position="sticky" top={0} bg="tan" p={4} ml={'auto'}>
+        <Flex zIndex={1} position="sticky" top={0} bg="cyan.500" p={4} ml={'auto'}>
             <Flex flex={1} margin="auto" align="center" maxW={800}>
                 <NextLink href="/">
                     <Link>

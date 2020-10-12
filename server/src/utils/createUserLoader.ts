@@ -9,6 +9,5 @@ export const createUserLoader = () => new DataLoader<number, User>(async (userId
     });
 
     const sortedUsers = userIds.map((userId) => userIdToUser[userId]);
-    console.log("sortedUsers", sortedUsers);
     return sortedUsers;
 });

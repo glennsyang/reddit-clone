@@ -25,8 +25,8 @@ class PaginatedPosts {
 @Resolver(Post)
 export class PostResolver {
     @FieldResolver(() => String)
-    textSnippet(@Root() root: Post) {
-        return root.text.slice(0, 50);
+    textSnippet(@Root() post: Post) {
+        return post.text.slice(0, 50);
     }
 
     @FieldResolver(() => User)
@@ -43,7 +43,6 @@ export class PostResolver {
             return null;
         }
 
-        console.log("user:", req.session.userId, post.id);
         const updoot = await updootLoader.load({
             postId: post.id,
             userId: req.session.userId,
