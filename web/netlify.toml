@@ -1,0 +1,5 @@
+## netlify.toml
+[build]
+  command = "yarn build && yarn export"
+  publish = "out"
+  environment = { NEXT_PUBLIC_API_URL = "https://api.glennsheppard.dev" }

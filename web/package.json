@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "export": "next export",
     "gen": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
@@ -15,6 +16,7 @@
     "@urql/exchange-graphcache": "^3.0.2",
     "emotion-theming": "^10.0.27",
     "formik": "^2.1.5",
+    "global": "^4.4.0",
     "graphql": "^15.3.0",
     "graphql-tag": "^2.11.0",
     "isomorphic-unfetch": "^3.0.0",
