@@ -11,7 +11,7 @@ const errorExchange: Exchange = ({ forward }) => ops$ => {
     return pipe(
         forward(ops$),
         tap(({ error }) => {
-            if (error?.message.includes("not authenticate")) {
+            if (error?.message.includes("not authenticated")) {
                 Router.replace("/login");
             }
         })
@@ -63,7 +63,7 @@ function invalidateAllPosts(cache: Cache) {
 }
 
 export const createUrqlClient = (ssrExchange: any, ctx: any) => {
-    let cookie = '';
+    let cookie = "";
     if (isServer()) {
         cookie = ctx?.req?.headers?.cookie;
     }
@@ -72,7 +72,11 @@ export const createUrqlClient = (ssrExchange: any, ctx: any) => {
         url: process.env.NEXT_PUBLIC_API_URL as string,
         fetchOptions: {
             credentials: "include" as const,
-            headers: cookie ? { cookie, } : undefined,
+            headers: cookie
+                ? {
+                    cookie,
+                }
+                : undefined,
         },
         exchanges: [
             dedupExchange,
