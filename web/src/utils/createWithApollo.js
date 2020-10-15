@@ -131,7 +131,9 @@ export const createWithApollo = (ac) => {
                         try {
                             // Import `@apollo/react-ssr` dynamically.
                             // We don't want to have this in our client bundle.
-                            const { getDataFromTree } = await import("@apollo/client/react/ssr");
+                            const { getDataFromTree } = await import(
+                                "@apollo/client/react/ssr"
+                            );
 
                             // Since AppComponents and PageComponents have different context types
                             // we need to modify their props a little.
@@ -179,7 +181,7 @@ export const createWithApollo = (ac) => {
 function createApolloClient(apolloClient, initialState, ctx) {
     // The `ctx` (NextPageContext) will only be present on the server.
     // use it to extract auth headers (ctx.req) or similar.
-    apolloClient.ssrMode = Boolean(ctx);
+    apolloClient.ssrModce = Boolean(ctx);
     apolloClient.cache.restore(initialState);
 
     return apolloClient;
