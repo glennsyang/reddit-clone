@@ -5,12 +5,12 @@ https://lireddit.netlify.app
 
 ## Built With
 
-[NextJS](https://nextjs.org/)
-[ChakraUI](https://chakra-ui.com/)
+- [NextJS](https://nextjs.org/)
+- [ChakraUI](https://chakra-ui.com/)
 
-[Express](https://expressjs.com/)
-[GraphQL](https://graphql.org/)
-[Apollo](https://github.com/apollographql)
+- [Express](https://expressjs.com/)
+- [GraphQL](https://graphql.org/)
+- [Apollo](https://github.com/apollographql)
 
 ## Status
 
